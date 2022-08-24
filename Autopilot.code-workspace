@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"name": "Autopilot",
+			"path": "."
+		}
+	],
+	"settings": {
+		"editor.defaultFormatter": "ms-vscode.cpptools",
+		"files.associations": {
+			"string": "cpp",
+			"initializer_list": "cpp",
+			"limits": "cpp",
+			"type_traits": "cpp",
+			"utility": "cpp"
+		},
+		"window.autoDetectColorScheme": false,
+		"workbench.preferredHighContrastLightColorTheme": "GitHub Dark",
+		"workbench.preferredLightColorTheme": "GitHub Dark",
+		"workbench.colorTheme": "GitHub Dark"
+	}
+}
