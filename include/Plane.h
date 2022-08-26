@@ -59,6 +59,8 @@ class Plane {
     float roll_base;
     float roll_error_base;
     float roll_trim = 0;
+    float roll_servo_val_r = 135;
+    float roll_servo_val_l = 135;
 
     /* PITCH VALUES */
     float pitch_target = 0;
@@ -68,6 +70,7 @@ class Plane {
     float pitch_base;
     float pitch_error_base;
     float pitch_trim = 0;
+    float pitch_servo_val = 0;
 
     /* YAW VALUES */
     float yaw_target = 0;
@@ -98,6 +101,8 @@ class Plane {
   public:
     void moveServo(Servo *servo, uint8_t value);
 
+    void makeCorrections();
+
     float kalman(float u);
 
     /*!
@@ -111,12 +116,14 @@ class Plane {
 
     void getIMUdata();
 
-    /*!
-     * @brief Retrieves raw data from all sensors and passes it through a low pass filter to limit noise
-    */
-    void getData();
+    void getDesiredState();
 
     void getErrors();
+
+    /*!
+    * @brief Retrieves raw data from all sensors and passes it through a low pass filter to limit noise
+    */
+    void getData();
 
     /*!
      * @brief Changes the flight phase to set how fast to run the computer
@@ -130,23 +137,6 @@ class Plane {
      */
     void getPhase(uint8_t *phase_value);
 
-    /*!
-     * @brief Starts initialization of plane
-     * @return Returns true if successful
-     */
-    void getPressure();
-
-    /*!
-     * @brief Returns temperature of ambient air
-     * @return Returns float of ambient air temperature
-     */
-    void getTemperature();
-
-    /*!
-     * @brief Returns temperature of ambient air
-     * @return Filtered Alitude
-     */
-    void getAltitude();
 
     /*!
      * @brief Prints current state of plane
@@ -167,7 +157,7 @@ class Plane {
      * @param recalibrate Read calibration data from memory or redo calibration steps
      * @return Returns true if calibration is complete
      */
-    void calibratePlane();
+    bool calibratePlane();
 
     
 };
