@@ -30,7 +30,7 @@ void loopRate(int freq) {
 
 void setup() {
     Serial.begin(9600);
-    // delay(100);
+    delay(100);
     while(!plane.start(29.84))
     delay(100);
 }
@@ -38,10 +38,10 @@ void setup() {
 void loop() {
     plane.printCurrentState();
     plane.getData();
-    // plane.getIMUdata();
     // plane.getAbsoluteAttitude();
-    // getDesiredState()
-    // plane.getErrors();
+    plane.getDesiredState();
+    plane.getErrors();
+    plane.makeCorrections();
 
     // Regulates loop rate to 200
     // loopRate(2000);
